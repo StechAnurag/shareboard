@@ -53,4 +53,10 @@ class Model
     	$this->execute();
     	return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Last insertedID
+    public function lastInsertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
 }
