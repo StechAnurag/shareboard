@@ -24,21 +24,31 @@
 			    </ul>
 
 			    <ul class="nav navbar-nav navbar-right">
-			      <li class="nav-item">
-			        <a class="nav-link" href="<?php echo ROOT_URL; ?>users/login">Login</a>
-			      </li>
-			      <li class="nav-item">
-			        <a class="nav-link" href="<?php echo ROOT_URL; ?>users/register">Register</a>
-			      </li>
+					<?php if (isset($_SESSION['is_user_loggedin'])): ?>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo ROOT_URL; ?>"><span style="color:#FF5733">Welcome </span><?php echo $_SESSION['user_data']['name']; ?></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo ROOT_URL; ?>users/logout"><button class="btn btn-outline-warning">Logout</button></a>
+						</li>
+					<?php else : ?>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo ROOT_URL; ?>users/login">Login</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<?php echo ROOT_URL; ?>users/register">Register</a>
+						</li>
+					<?php endif; ?>
 			    </ul>
-			    <form class="form-inline my-2 my-lg-0">
+			    <!-- <form class="form-inline my-2 my-lg-0">
 			      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 			      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			    </form>
-			    			  </div>
+			    </form> -->
+			</div>
 		  </div>
 	</nav>
 	<main role="main" class="container">
+		<?php Messages::displayMsg(); ?>
 	    <?php require($view); ?>
 	</main>
 	

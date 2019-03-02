@@ -1,5 +1,7 @@
 <div>
-	<a href="<?php echo ROOT_PATH; ?>shares/addshare" class="btn btn-success btn-share">Share something</a>
+	<?php if (isset($_SESSION['is_user_loggedin'])): ?>
+		<a href="<?php echo ROOT_PATH; ?>shares/addshare" class="btn btn-success btn-share">Share something</a>
+	<?php endif; ?>
 	<?php foreach ($viewmodel as $item) : ?>
 		<div class="card custom-card">
 		  <!-- <div class="card-header">

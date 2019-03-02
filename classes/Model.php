@@ -59,4 +59,11 @@ class Model
     {
         return $this->dbh->lastInsertId();
     }
+
+    // Get Single Result
+    public function singleResult()
+    {
+        $this->execute();
+        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
